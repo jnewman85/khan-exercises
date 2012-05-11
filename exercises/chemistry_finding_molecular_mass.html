@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math word-problems chemistry">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Finding Molecular Mass</title>
+    <script src="../khan-exercise.js"></script>
+	<script type="text/javascript">
+        function getMolecule(){
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="exercise">
+		<div class="vars" data-ensure="ELEMENT.period < 3">
+		    <var id="ELEMENT">randFromArray(elements)</var>
+            <var id="NAME">ELEMENT.name</var>
+		</div>
+        
+		<div class="problems">
+			<div>
+				<div class="question">
+                    <p>What is the mass of <var>NAME</var>?</p>
+                    <p>Give your answer correct to three decimal places.</p>
+                </div>
+                <div class="solution">NAME</div>
+            </div>
+        </div>
+        
+        <div class="hints">
+            <p>Remember that one mole is equal to avagadro's number of molecules.</p>
+		</div>
+	</div>
+</body>
+</html>

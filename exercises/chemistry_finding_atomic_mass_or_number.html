@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-require="math word-problems chemistry">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Finding Molecular Mass</title>
+    <script src="../khan-exercise.js"></script>
+	<script type="text/javascript">
+        function getAnswer(RANDOM_BINARY, WEIGHT, NUMBER){
+            var ans = 0;
+            if(RANDOM_BINARY === 0){ans = (Math.round(100*WEIGHT))/100;}else{ans = NUMBER;}
+            return ans;
+        }
+        function getName(RANDOM_BINARY){
+            if(RANDOM_BINARY === 0){return "atomic mass";}else{return "atomic number";}
+        }
+    </script>
+</head>
+<body>
+    <div class="exercise">
+		<div class="vars" data-ensure="ELEMENT.period < 3">
+		    <var id="ELEMENT">randFromArray(elements)</var>
+            <var id="NAME">ELEMENT.name</var>
+            <var id="RANDOM_BINARY">randRange(0,1)</var>
+            <var id="MASS_NUMBER_ANSWER">getAnswer(RANDOM_BINARY, ELEMENT.atomic_weight, ELEMENT.atomic_number)</var>
+            <var id="MASS_NUMBER_NAME">getName(RANDOM_BINARY)</var>
+            <var id="SYMBOL">ELEMENT.symbol</var>
+		</div>
+        
+		<div class="problems">
+			<div>
+				<div class="question">
+                    <p>What is the <var>MASS_NUMBER_NAME</var> of <var>NAME</var>?</p>
+                    <p>If necessary, give your answer correct to two decimal places.</p>
+                </div>
+                <div class="solution"><var>MASS_NUMBER_ANSWER</var></div>
+            </div>
+        </div>
+        
+        <div class="hints">
+            <p>First, look at your periodic table.</p>
+            <p>Find the symbol <b><var>SYMBOL</var></b>.</p>
+            <p>Atomic number is usually above the symbol whereas atomic mass is usually below the symbol.</p>
+            <p> The <var>MASS_NUMBER_NAME</var> is <b><var>MASS_NUMBER_ANSWER</var></b>.</p>
+		</div>
+	</div>
+</body>
+</html>

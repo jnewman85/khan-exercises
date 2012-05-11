@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math word-problems chemistry">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Finding Molecular Mass</title>
+    <script src="../khan-exercise.js"></script>
+	<script type="text/javascript">
+
+    </script>
+</head>
+<body>
+    <div class="exercise">
+		<div class="vars" >
+		    <var id="ELEMENT">randFromArray(elements)</var>
+            <var id="NAME">ELEMENT.name</var>
+            <var id="ATOMIC_MASS">round(100*ELEMENT.atomic_weight)/100</var>
+		</div>
+        
+		<div class="problems">
+			<div>
+				<div class="question">
+                    <p>What is the atomic mass of <var>NAME</var>?</p>
+                    <p>If necessary, give your answer correct to two decimal places.</p>
+                </div>
+                <div class="solution"><var>ATOMIC_MASS</var></div>
+            </div>
+        </div>
+        
+        <div class="hints">
+            <p>Remember that one mole is equal to avagadro's number of molecules.</p>
+		</div>
+	</div>
+</body>
+</html>
