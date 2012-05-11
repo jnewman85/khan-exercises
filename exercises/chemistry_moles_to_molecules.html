@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-require="math word-problems">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Moles to Molecules</title>
+    <script src="../khan-exercise.js"></script>
+	<script type="text/javascript">
+        function getMolesBase( MOLES ) {
+            var answer = 0;
+			if(6.022*MOLES < 0.1){
+				answer = 100*6.022*MOLES;
+			}
+			else if(6.022*MOLES < 1){
+				answer = 10*6.022*MOLES;
+			}
+			else if(6.022*MOLES >= 10){
+				answer = 6.022*MOLES/10;
+			}
+			else{
+				answer = 6.022*MOLES;
+				}
+			answer = Math.round(1000*answer)/1000;
+            return answer;
+        }
+
+        function getMolesExp( MOLES ) {
+            var answer = 0;
+			if(6.022*MOLES < 0.1){
+				answer = 21;
+			}
+			else if(6.022*MOLES < 1){
+				answer = 22;
+			}
+			else if(6.022*MOLES >= 10){
+				answer = 24;
+			}
+			else{
+				answer = 23;
+				}
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    <div class="exercise">
+		<div class="vars">
+			<var id="SEED_NUMBER">randRange( 10, 9999 )</var>
+			<var id="MOLES">SEED_NUMBER/1000</var>
+			<var id="MOLECULES">6.022 * pow(10, 23) * MOLES</var>
+			<var id="MOLECULES_BASE">getMolesBase(MOLES)</var>
+			<var id="MOLECULES_EXP">getMolesExp(MOLES)</var>
+		</div>
+
+		<div class="problems">
+			<div>
+				<div class="question">
+					<p>How many molecules are in <var>MOLES</var> moles?</p>
+					<p>Give your answer correct to three decimal places.</p>
+				</div>
+                <div class="solution" data-type="multiple">
+                    <span class="sol base"><var>MOLECULES_BASE</var></span>
+                    <code> \times 10</code>
+                    <sup class="sol exp" style="width: 20px;"><var>MOLECULES_EXP</var></sup>
+                </div>
+			</div>
+		</div>
+		<div class="hints">
+			<p>Remember that one mole is equal to avagadro's number of molecules.</p>
+			<p>Avagadro's number is <code>6.022 \times 10^{23}</code>.</p>
+			<p>So, multiply <var>MOLES</var> and Avogadro's number.</p>
+			<p><code>(<var>MOLES</var> \text{ moles}) \times (6.022 \times 10^{23})</code></p>
+			<p><code> = <var>MOLECULES_BASE</var> \times  10^{<var>MOLECULES_EXP</var>} \text{ molecules.}</code></p>
+		</div>
+	</div>
+</body>
+</html>
