@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math word-problems">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>pH to Concentration</title>
+    <script src="../khan-exercise.js"></script>
+</head>
+<body>
+    <div class="exercise">
+		<div class="vars" data-ensure="SEED_NUMBER % 10 !== 0">
+			<var id="SEED_NUMBER">randRange( 100, 999 )</var>
+			<var id="SCI_ACID">SEED_NUMBER/100</var>
+			<var id="EXP_ACID">randRange( 1, 13 )</var>
+
+			<var id="CONCENTRATION_ACID">SCI_ACID * pow(10,-EXP_ACID)</var>
+			<var id="CONCENTRATION_BASE">pow(10,-14)/CONCENTRATION_ACID</var>
+			
+			<var id="EXP_BASE">15-EXP_ACID</var>
+			<var id="SCI_BASE">round(100*CONCENTRATION_BASE * pow(10, EXP_BASE))/100</var>
+			
+			<var id="pH">round(1000*-log(CONCENTRATION_ACID)/log(10))/1000</var>
+			<var id="pOH">14-pH</var>
+		</div>
+
+		<div class="problems">
+			<div id="acid-to-pH">
+				<div class="question">
+					<p><var>person( 1 )</var> has an acidic solution with concentration <code><var>SCI_ACID</var> \times 10 ^ {-<var>EXP_ACID</var>}</code> M.</p>
+					<p>What is the pH of <var>his( 1 )</var> solution?  Give your answer correct to three decimal places.</p>
+				</div>
+				<div class="solution"><var>pH</var></div>
+				<div class="hints">
+					<p>The pH of an acidic solution is the negative of the log of the concentration.</p>
+					<p><code>\text{pH} = -log{\text{concentration}}</code></p>
+				</div>
+			</div>
+
+			<div id="pH-to-acid">
+				<div class="question">
+					<p><var>person( 1 )</var> has an acidic solution with pH <var>pH</var>.</p>
+					<p>What is the concentration (molarity) of <var>his( 1 )</var> solution?  Give your in scientific notation and correct to two decimal places.</p>
+				</div>
+                <div class="solution" data-type="multiple">
+                    <span class="sol base"><var>SCI_ACID</var></span>
+                    <code> \times 10</code>
+                    <sup class="sol exp" style="width: 20px;">-<var>EXP_ACID</var></sup>
+                </div>
+				<div class="hints">
+					<p>Concentration is equal to 10 to the negative pH if the solution is an acid.</p>
+					<p><code>\text{concentration} = 10 ^ {- \text{pH}}</code></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
