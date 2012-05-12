@@ -226,3 +226,30 @@ function PeriodicTable() {
 
     return this;
 }
+
+//Various Molecules for students to examine and work on
+//Should be added to
+//Bug: Cannot be called in exercises for unknown reason (but can be copied and pasted)
+function getMolecule(){
+    var allMolecules = [
+        ["Na","Cl"],
+        ["H","Cl"],
+        ["H","F"],
+        ["H","I"],
+        ["H","H","O"],
+        ["H","H","O","O"],
+        ["K","I"],
+        ["Ca","I","I"],
+        ["Mg","F","F"],
+        ["C","O","O"],
+        ["N","O"],
+        ["I","I"],
+        ["Cs","I"],
+        ["Sr","Br"],
+        ["Ag","N","O","O","O"],
+        ["H","H"]
+        ];
+    var pick = randomnumber=Math.floor(Math.random()*allMolecules.length);
+    var ans = allMolecules[pick];
+    return ans;
+}

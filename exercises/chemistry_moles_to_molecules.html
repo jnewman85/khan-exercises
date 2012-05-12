@@ -5,7 +5,7 @@
     <title>Moles to Molecules</title>
     <script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
-        function getMolesBase( MOLES ) {
+        function getMoleculesBase( MOLES ) {
             var answer = 0;
 			if(6.022*MOLES < 0.1){
 				answer = 100*6.022*MOLES;
@@ -23,7 +23,7 @@
             return answer;
         }
 
-        function getMolesExp( MOLES ) {
+        function getMoleculesExp( MOLES ) {
             var answer = 0;
 			if(6.022*MOLES < 0.1){
 				answer = 21;
@@ -47,8 +47,8 @@
 			<var id="SEED_NUMBER">randRange( 10, 9999 )</var>
 			<var id="MOLES">SEED_NUMBER/1000</var>
 			<var id="MOLECULES">6.022 * pow(10, 23) * MOLES</var>
-			<var id="MOLECULES_BASE">getMolesBase(MOLES)</var>
-			<var id="MOLECULES_EXP">getMolesExp(MOLES)</var>
+			<var id="MOLECULES_BASE">getMoleculesBase(MOLES)</var>
+			<var id="MOLECULES_EXP">getMoleculesExp(MOLES)</var>
 		</div>
 
 		<div class="problems">

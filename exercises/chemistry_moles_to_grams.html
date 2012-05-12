@@ -2,7 +2,7 @@
 <html data-require="math word-problems chemistry">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Finding Molecular Mass</title>
+    <title>Converting Moles to Grams</title>
     <script src="../khan-exercise.js"></script>
     <script type="text/javascript">
         function getMolecule(){
@@ -70,12 +70,13 @@
             <var id="MOLECULE_PARTS">getMolecule()</var>
             <var id="MOLECULE">combineMolecule(MOLECULE_PARTS)</var>
             <var id="TOTAL_MASS">round(100*getMoleculeMass(MOLECULE_PARTS))/100</var>
+			<var id="MOLES">randRange(10,9999)/1000</var>
         </div>
         
         <div class="problems">
             <div>
                 <div class="question">
-                    <p>What is the molar mass of <code><var>MOLECULE</var></code> ?</p>
+                    <p>What is the mass of <var>MOLES</var> moles of <code><var>MOLECULE</var></code> ?</p>
                     <p>Give your answer correct to two decimal places.</p>
                 </div>
                 <div class="solution"><var>TOTAL_MASS</var></div>
