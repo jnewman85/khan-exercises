@@ -5,29 +5,6 @@
     <title>Finding Molecular Mass</title>
     <script src="../khan-exercise.js"></script>
     <script type="text/javascript">
-        function getMolecule(){
-            var allMolecules = [
-                ["Na","Cl"],
-                ["H","Cl"],
-                ["H","F"],
-                ["H","I"],
-                ["H","H","O"],
-                ["H","H","O","O"],
-                ["K","I"],
-                ["Ca","I","I"],
-                ["Mg","F","F"],
-                ["C","O","O"],
-                ["N","O"],
-                ["I","I"],
-                ["Cs","I"],
-                ["Sr","Br"],
-                ["Ag","N","O","O","O"],
-                ["H","H"]
-                ];
-            var pick = randomnumber=Math.floor(Math.random()*allMolecules.length);
-            var ans = allMolecules[pick];
-            return ans;
-        }
         function combineMolecule(molecule){
             var whole = "";
             var n = 1;
@@ -62,6 +39,15 @@
             }
             return total_mass;
         }
+        function firstMass(firstAtom){
+            var total_mass = 0;
+            for(j=0;j<elements.length;j++){
+                if(firstAtom == elements[j].symbol){
+                    total_mass += elements[j].atomic_weight;
+                }
+            }
+            return total_mass;
+        }
     </script>
 </head>
 <body>
@@ -70,6 +56,7 @@
             <var id="MOLECULE_PARTS">getMolecule()</var>
             <var id="MOLECULE">combineMolecule(MOLECULE_PARTS)</var>
             <var id="TOTAL_MASS">round(100*getMoleculeMass(MOLECULE_PARTS))/100</var>
+            <var id="FIRST_MASS"> firstMass(MOLECULE_PARTS[0])</var>
         </div>
         
         <div class="problems">
@@ -84,7 +71,9 @@
         
         <div class="hints">
             <p>To get molar mass, just add up all the atomic masses, found on the periodic table.</p>
-            <p>The molar mass is <var>TOTAL_MASS</var> g/mol.</p>
+            <p>The first molar mass to add is <code><var>MOLECULE_PARTS[0]</var></code>.</p>
+            <p>The atom <code><var>MOLECULE_PARTS[0]</var></code> has molar mass <var>FIRST_MASS</var> g/mol.</p>
+            <p>The total molar mass is <var>TOTAL_MASS</var> g/mol.</p>
         </div>
     </div>
 </body>

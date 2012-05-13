@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html data-require="math word-problems chemistry">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Converting Grams and Moles</title>
+    <script src="../khan-exercise.js"></script>
+    <script type="text/javascript">
+
+        function getMoleculeMass(molecule_parts){
+            var total_mass = 0;
+            for(i=0;i<molecule_parts.length;i++){
+                for(j=0;j<elements.length;j++){
+                    if(molecule_parts[i] == elements[j].symbol){
+                        total_mass += elements[j].atomic_weight;
+                    }
+                }
+            }
+            return total_mass;
+        }
+    </script>
+</head>
+<body>
+    <div class="exercise">
+        <div class="vars" data-ensure="MOLES % 10 !== 0">
+            <var id="MOLECULE_PARTS">getMolecule()</var>
+            <var id="MOLECULE">combineMolecule(MOLECULE_PARTS)</var>
+            <var id="TOTAL_MASS">getMoleculeMass(MOLECULE_PARTS)</var>
+			<var id="MOLES">randRange(100,999)/1000</var>
+            <var id="MASS">MOLES*TOTAL_MASS</var>
+            <var id="MASS_SF">MASS.toPrecision(3)</var>
+            <var id="MOLECULE_FIRST">MOLECULE_PARTS[0]</var>
+            <var id="FIRST_MASS">getMoleculeMass(MOLECULE_PARTS[0])</var>
+            <var id="MOLECULE_SECOND">MOLECULE_PARTS[1]</var>
+            <var id="SECOND_MASS">getMoleculeMass(MOLECULE_PARTS[1])</var>
+        </div>
+        
+        <div class="problems">
+            <div class="gram to moles">
+                <div class="question">
+                    <p>How many moles are in <var>MASS_SF</var> grams of <code><var>MOLECULE</var></code> ?</p>
+                    <p>Give your answer with the correct number of significant figures.</p>
+                </div>
+                <div class="solution" data-type="multiple">
+                    <span class="sol base"><var>MOLES</var></span>
+                    <code> \text{ moles}</code>
+                </div>
+                <div class="hints">
+                    <p>The conversion rate between moles and mass is molar mass, which also happens to be the atomic weight.</p>
+                    <p>To find molar mass, remember to add together the atomic weights (molar mass) of each atom.</p>
+                    <p>The first atoms is <code><var>MOLECULE_FIRST</var></code> and its molar mass is <var>FIRST_MASS</var> g/mol.</p>
+                    <p>The second atoms is <code><var>MOLECULE_SECOND</var></code> and its molar mass is <var>SECOND_MASS</var> g/mol.</p>
+                    <p>Continue adding the masses together to get the total atomic mass, then divide the amount of substance you have by the molar mass.</p>
+                    <p><code>\text{moles} = \frac{\text{mass}}{\text{molar mass}}</code></p>
+                    <p><code>\text{moles} = \frac{<var>MASS_SF</var> \text{ g}}{<var>TOTAL_MASS</var> \text{ g/mol}}</code></p>
+                    <p><code> = <var>MOLES</var> \text{ moles}</code> when you account for significant figures.</p>
+                </div>
+            </div>
+
+            <div class="moles to grams">
+                <div class="question">
+                    <p>What is the mass (in grams) of <var>MOLES</var> moles of <code><var>MOLECULE</var></code> ?</p>
+                    <p>Give your answer with the correct number of significant figures.</p>
+                </div>
+                <div class="solution"data-type="multiple">
+                    <span class="sol base"><var>MASS_SF</var></span>
+                    <code> \text{ g}</code>
+                </div>
+                <div class="hints">
+                    <p>The conversion rate between moles and mass is molar mass, which also happens to be the atomic weight.</p>
+                    <p>To find molar mass, remember to add together the atomic weights (molar mass) of each atom.</p>
+                    <p>The first atoms is <code><var>MOLECULE_FIRST</var></code> and its molar mass is <var>FIRST_MASS</var> g/mol.</p>
+                    <p>The second atoms is <code><var>MOLECULE_SECOND</var></code> and its molar mass is <var>SECOND_MASS</var> g/mol.</p>
+                    <p>Continue adding the masses together to get the total atomic mass and then multiply by the total weight of the substance.</p>
+                    <p><code>\text{mass} =  \text{moles} \times \text{molar mass}</code></p>
+                    <p><code>\text{mass} = <var>MOLES</var> \text{ moles} \times <var>TOTAL_MASS</var> \text{ g/mol}</code></p>
+                    <p><code> = <var>MASS_SF</var> \text{ g}</code> when you account for significant figures.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

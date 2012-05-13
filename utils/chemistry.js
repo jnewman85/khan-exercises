@@ -228,9 +228,8 @@ function PeriodicTable() {
 }
 
 //Various Molecules for students to examine and work on
-//Should be added to
-//Bug: Cannot be called in exercises for unknown reason (but can be copied and pasted)
-function getMolecule(){
+//Should continue to add common molecules
+var getMolecule = function(){
     var allMolecules = [
         ["Na","Cl"],
         ["H","Cl"],
@@ -253,3 +252,41 @@ function getMolecule(){
     var ans = allMolecules[pick];
     return ans;
 }
+
+//Formats the molecule into Latex-recognizable output from getMolecule function.
+var combineMolecule = function(molecule){
+    var whole = "";
+    var n = 1;
+    for(i=0;i<molecule.length;i++){
+        if(i!=0 && molecule[i] === molecule [i-1]){
+            n++;
+            if(i === molecule.length - 1){
+                whole += "_";
+                whole += n.toString();
+            }
+        }
+        else if(n > 1){
+            whole += "_";
+            whole += n.toString();
+            n = 1;
+            whole += molecule[i];
+        }
+        else{
+            whole += molecule[i];
+        }
+    }
+    return whole;
+}
+
+//Function: getSigFigFromNum( num ), provides the significant digits of a number.
+//@num must be a number (base 10) that is a string. example "01"
+var getSigFigFromNum = function( num ){
+	if( isNaN( +num ) ){
+		throw new Error( "getSigFigFromNum(): num (" + num + ") is not a number." );
+	}
+	// We need to get rid of the leading zeros for the numbers.
+	num = num.replace( /^0+/, '');  
+	// re is a RegExp to get the numbers from first non-zero to last non-zero
+	var re = /[^0](\d*[^0])?/;	
+	return ( /\./.test( num ) )? num.length - 1 : (num.match( re ) || [''])[0].length;
+};

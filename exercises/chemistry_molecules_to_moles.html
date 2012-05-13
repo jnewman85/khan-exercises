@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html data-require="math word-problems">
+<html data-require="math word-problems chemistry">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Moles to Molecules</title>
+    <title>Converting Moles to Molecules</title>
     <script src="../khan-exercise.js"></script>
 	<script type="text/javascript">
-        function getMolesBase( MOLES ) {
+        function getMoleculesBase( MOLES ) {
             var answer = 0;
 			if(6.022*MOLES < 0.1){
 				answer = 100*6.022*MOLES;
@@ -22,7 +22,7 @@
 			answer = Math.round(1000*answer)/1000;
             return answer;
         }
-        function getMolesExp( MOLES ) {
+        function getMoleculesExp( MOLES ) {
             var answer = 0;
 			if(6.022*MOLES < 0.1){
 				answer = 21;
@@ -46,14 +46,17 @@
 		    <var id="SEED_NUMBER">randRange( 10, 9999 )</var>
 		    <var id="MOLES">SEED_NUMBER/1000</var>
 		    <var id="MOLECULES">6.022 * pow(10, 23) * MOLES</var>
-			<var id="MOLECULES_BASE">getMolesBase(MOLES)</var>
-            <var id="MOLECULES_EXP">getMolesExp(MOLES)</var>
+			<var id="MOLECULES_BASE">getMoleculesBase(MOLES)</var>
+            <var id="MOLECULES_EXP">getMoleculesExp(MOLES)</var>
+            
+            <var id="MOLECULE_PARTS">getMolecule()</var>
+            <var id="MOLECULE">combineMolecule(MOLECULE_PARTS)</var>
 		</div>
         
 		<div class="problems">
 			<div>
 				<div class="question">
-                    <p>How many moles are in <code><var>MOLECULES_BASE</var> \times 10 ^ {<var>MOLECULES_EXP</var>}</code> molecules?</p>
+                    <p>How many moles are in <code><var>MOLECULES_BASE</var> \times 10 ^ {<var>MOLECULES_EXP</var>}</code> molecules of <code><var>MOLECULE</var></code> ?</p>
                     <p>Give your answer correct to three decimal places.</p>
                 </div>
                 <div class="solution">MOLES</div>
